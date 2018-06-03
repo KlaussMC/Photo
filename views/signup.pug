@@ -2,7 +2,7 @@ extends layout
 
 block content
   if (err)
-    code=err
+    span=err
     
   form(method="post", action="signup")
     label(for="email") Email
@@ -22,3 +22,5 @@ block content
     input(name="pc", type="password", placeholder="Password")#pc
     br
     button(type="submit") Sign Up
+    br
+    a(href="/login") Got an account?

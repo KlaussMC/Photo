@@ -144,4 +144,10 @@ setItem
  - Now takes no arguments and is faster.
  - bugs were fixed.
 
+loaddb
+
+    krakendb.loaddb()
+
+ - Now actually loads the data. Before this release, the data was not being applied to the object correctly, this is fixed.
+
 __If you find any bugs, please report them to https://github.com/KlaussMC/krakendb. If you wish to comment, or if you wish to contribute, feel free. I would happily accept help and feedback.__

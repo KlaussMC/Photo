@@ -2,8 +2,10 @@ module.exports = (function () {
 	var db = require("krakendb")
 	var ne = require("node-encrypt")
 
-	if (db.dbexists("users")) {
-		db.loaddb("users")
+	// db.loaddb("user")
+
+	if (db.dbexists("user")) {
+		db.loaddb("user")
 	} else {
 		db.newdb("user", ["email", "password", "friends"])
 		db.exportdb();
@@ -22,7 +24,6 @@ module.exports = (function () {
 					db.push(un, [email, password, []]);
 					db.exportdb();
 				});
-
 				return 1;
 			} else {
 				return "Passwords don't match.";
@@ -32,7 +33,19 @@ module.exports = (function () {
 		}
 	}
 	funcs.login = function (un, pw) {
-		
+		if (db.indb(un)) {
+			var pass = 1;
+			console.log("checking passwords")
+			ne.decrypt({ cipher: db.getItem(un, 'password') }, (err, plaintext) => {
+				pass = plaintext === pw ? 2 : 3;
+			})
+			while (pass) {
+				if (pass !== 1)
+					return pass;
+			}
+		} else {
+			return 4;
+		}
 	}
 
 	return funcs;

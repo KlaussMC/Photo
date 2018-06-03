@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  if (err)
+    span=err
   form(method="post", action="login")
     label(for="un") Your Username
     br
@@ -11,3 +13,5 @@ block content
     input(name="pw", placeholder="Password", type="password")#pw
     br
     button(type="submit") Log In
+    br
+    a(href="/signup") Need an account?
