@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  form(method="post", action="login")
+    label(for="un") Your Username
+    br
+    input(name="un", placeholder="Username")#un
+    br
+    label(for="pw") Your Password
+    br
+    input(name="pw", placeholder="Password", type="password")#pw
+    br
+    button(type="submit") Log In

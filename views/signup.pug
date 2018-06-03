@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  if (err)
+    code=err
+    
+  form(method="post", action="signup")
+    label(for="email") Email
+    br
+    input(name="email", type="email", placeholder="name@server.domain")#email
+    br
+    label(for="un") Your Username
+    br
+    input(name="un", type="text", placeholder="Username")#un
+    br
+    label(for="pw") Enter A Secure Password
+    br
+    input(name="pw", type="password", placeholder="Password")#pw
+    br
+    label(for="pc") Confirm Your Password
+    br
+    input(name="pc", type="password", placeholder="Password")#pc
+    br
+    button(type="submit") Sign Up
