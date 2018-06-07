@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var less = require("express-less")
+var bodyParser = require('body-parser')
 
 var session = require("express-session")
 var FileStore = require("session-file-store")(session)
@@ -23,6 +24,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(bodyParser.json({extended: false, limit: '50mb'}));
+app.use(bodyParser.raw({extended: false, limit: '50mb'}));
+app.use(bodyParser.text({extended: false, limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}));
 
 app.use(session({
 	secret: "Shh, its a secret!",

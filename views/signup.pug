@@ -2,7 +2,7 @@ extends layout
 
 block content
   if (err)
-    span=err
+    span.err=err
     
   form(method="post", action="signup")
     label(for="email") Email

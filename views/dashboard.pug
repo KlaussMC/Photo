@@ -1,4 +1,41 @@
 extends layout
 
 block content
-  h1 Welcome
+  script(src="/src/loadAlbum.js", defer='true')
+  ul
+    if (albums.length > 0)
+      each item in albums
+        li(onclick= "vars.loadAlbum('" + item + "')").album
+          span.title=item
+    else
+      h2(style="font-size: 16pt; text-align: center;") There are no albums here.
+      
+  .albumView
+    .albumControls
+      h1.albumName
+      button(onclick="vars.closeAlbum()")#close.tool Close
+    .main
+      ul.images
+    
+    #imgDisplayContainer.smallscreen
+      #controlPanel
+        button(onclick="window.vars.closeImage()").tool
+          img(src="res/close.svg")
+      .imgDisplay
+        img(onmousemove="window.vars.showControlsWithTimer()")#viewer.smallscreen
+        //- script.
+          document.querySelector('.viewer').addEventListener('mouseover', function () {
+            vars.showControls();
+          })
+    .controls(onmouseover="window.vars.showControls()", onmouseout="() => { window.vars.showControlsWithTimer(true) }")
+      button(onclick="window.vars.download()")
+        img(src="res/download.svg")
+      button(onclick="window.vars.prev()")
+        img(src="res/prev.svg")
+      button(onclick="window.vars.hideControls()")
+        img(src="res/hideControls.svg")
+      button(onclick="window.vars.next()")
+        img(src="res/next.svg")
+      button#fsbtn
+        img(src="res/fullscreen.svg")#fsbtnimg
+              

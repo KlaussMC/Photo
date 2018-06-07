@@ -25,6 +25,7 @@ module.exports = (function () {
 					db.exportdb();
 				});
 				return 1;
+				fs.mkdirSync(`user-data/${un}`)
 			} else {
 				return "Passwords don't match.";
 			}
@@ -35,7 +36,7 @@ module.exports = (function () {
 	funcs.login = function (un, pw) {
 		if (db.indb(un)) {
 			var pass = 1;
-			console.log("checking passwords")
+			// console.log("checking passwords")
 			ne.decrypt({ cipher: db.getItem(un, 'password') }, (err, plaintext) => {
 				pass = plaintext === pw ? 2 : 3;
 			})
