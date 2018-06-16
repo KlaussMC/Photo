@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var less = require("express-less")
-var bodyParser = require('body-parser')
 
 var session = require("express-session")
 var FileStore = require("session-file-store")(session)
@@ -12,6 +11,10 @@ var FileStore = require("session-file-store")(session)
 var router = require('./router');
 
 var app = express();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,13 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.json({extended: false, limit: '50mb'}));
-app.use(bodyParser.raw({extended: false, limit: '50mb'}));
-app.use(bodyParser.text({extended: false, limit: '50mb'}));
-app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}));
-
 app.use(session({
-	secret: "Shh, its a secret!",
+  secret: "63a243c65619cd4a4fc8e3b4cb948774",
     resave: true,
     saveUninitialized: true
 }));

@@ -29,9 +29,6 @@ module.exports = (function() {
 		// return null;
 		return fs.readFileSync(`user-data/${user}/${album}/${image}`)
 	}
-	funcs.getAlbumList = function(user) {
-		return fs.readdirSync(`user-data/${user}`)
-	}
 
 	return funcs;
 })();

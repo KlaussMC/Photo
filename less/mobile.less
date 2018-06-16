@@ -1,0 +1,62 @@
+@import "./master.less";
+
+@media screen and (max-width:16cm) {
+    form {
+        width: 100vw !important;
+        padding: 25px;
+        position: absolute;
+        left: 0 !important;
+    }
+    .album {
+        width: calc(100% - 30px);
+    }
+    .albumView {
+        width: 99vw;
+        height: 99vh;
+        // margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+        box-shadow: 0 0 5px #666;
+        position: fixed;
+        top: 0.5vw;
+        left: 0.5vh;
+        border-radius: 0;
+        padding: 2px;
+        border: none !important;
+        .main {
+            box-shadow: none !important;
+            .images {
+                .photo {
+                    // display: block;
+
+                    // max-width: 100px;
+                    // max-height: 100px;
+                    .title {
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow-x: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+        .albumControls {
+            margin: 0;
+        }
+        .fullscreen {
+            .imgDisplay {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 16cm) {
+    .imgDisplay {
+        padding: 5px;
+        width: 95vw;
+        height: 95vh;
+    }
+}

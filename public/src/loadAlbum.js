@@ -1,6 +1,7 @@
 (function () {
 
 	window.vars = {
+		fullScreen: false,
 		openAlbum: null,
 		loadasbuffer: false,
 		openImage: null,
@@ -59,6 +60,7 @@
 		window.vars.openAlbum = null;
 	}
 	window.vars.closeImage = function() {
+		window.vars.fullScreen = false;
 		window.vars.viewer.querySelector('#imgDisplayContainer').style.display = "none";
 		window.vars.hideControls();
 		window.vars.openImage = null;
@@ -68,12 +70,11 @@
 			i = window.vars.imageIndex;
 		}
 
+		window.vars.fullScreen = false;
 		var fs = document.querySelector("#viewer");
-		window.vars.fullScreen = true;
 		fs.className = window.vars.fullScreen ? "smallscreen" : "fullscreen";
 		var display = document.querySelector("#imgDisplayContainer");
 		display.className = window.vars.fullScreen ? "smallscreen" : "fullscreen";
-
 
 		console.log(window.vars.openAlbum)
 		document.querySelector("#imgDisplayContainer").style.display = "block";

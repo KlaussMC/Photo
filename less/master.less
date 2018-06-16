@@ -17,24 +17,17 @@
   /* font-weight: lighter; */
   color: @text-color;
 }
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  -webkit-text-fill-color: @text-color !important;
-}
-input {
-  background: #fff;
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #a9a9a9;
-  color: @text-color !important;
-  // box-shadow: 0 1px 5px 0 #ccc inset !important;
-  margin-bottom: 15px;
-}
 
 a {
   color: @accent;
   text-decoration: none;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #a9a9a9;
+  margin-bottom: 10px;
 }
 
 button[type="submit"] {
@@ -49,11 +42,26 @@ button[type="submit"] {
 }
 form {
   background: @background;
-  position: relative;
-  width: 35vw;
+  position: absolute;
+  display: block;
+  left: calc(50vw - 200px) !important;
+  width: 400px !important;
   padding: 25px;
-  left: 32.5vw;
-  top: 10vh;
+  // left: 32.5vw;
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: @text-color !important;
+  }
+  input[type="text"], input[type="password"], input[type="email"], input[type="file"] {
+    background: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #a9a9a9;
+    color: @text-color !important;
+    // box-shadow: 0 1px 5px 0 #ccc inset !important;
+    margin-bottom: 15px;
+  }
 }
 
 header {
@@ -70,11 +78,19 @@ header {
     ul {
       width: 100%;
       display: flex;
+      text-align: center;
       li {
         width: 100%;
         padding: 10px;
         list-style-type: none;
         text-align: center;
+
+        .title {
+          width: 100%;
+          white-space: nowrap;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
   }
@@ -111,19 +127,40 @@ body {
     box-shadow: 0 0px 5px 0 #666 inset !important;
   }
   .albumControls {
-    grid-row: 1;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    .albumName {
-      grid-column: 1;
-      grid-row: 1;
-      width: 100%;
-      text-align: center;
-      font-size: 22pt;
-      color: #224;
-      height: 90%;
+    margin: 15px;
+    width: 100vw;
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    padding: 5px;
+    h1, #close {
+        color: #eee;
+        display: block;
+        position: fixed;
+        line-height: 20px;
+        font-size: 25px;
     }
-  }
+    h1 {
+        height: 30px !important;
+        // background: @header;
+        font-size: 20px !important;
+        position: relative;
+        text-align: left;
+        float: right;
+        max-width: calc(100% - 50px);
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+    #close {
+        background: transparent !important;
+        border: none;
+        float: left;
+        img {
+            width: 50px;
+        }
+    }
+}
 }
 button.tool {
   align-items: flex-start;
@@ -138,12 +175,12 @@ button.tool > * {
   background-image: url("/res/close.svg");
 }
 .album {
-  width: 300px;
-  height: 300px;
-  background: @header;
+  width: 150px;
+  height: 150px;
+  background: @accent;
   border-radius: 5px;
   float: left;
-  margin: 5px;
+  margin: 15px;
   list-style-type: none;
 }
 .album .title {
@@ -340,14 +377,18 @@ span.err {
 }
 section#newAlbum {
   width: 75vw;
-  position: relative;
+  position: fixed;
+  z-index: 7;
   left: 12.5vw;
   text-align: left !important; 
   background: #abf;
   padding: 15px;
   height: 100%;
   display: none;
-  
+  input[type="checkbox"] {
+    width: 50%;
+    text-align: center;
+  }
   #cont {
     width: 75%;
     position: relative;
@@ -361,6 +402,18 @@ section#newAlbum {
       text-align: left;
       float: left;
       display: block;
+    }
+    button {
+      background-color: dodgerblue;
+      background-image: linear-gradient(-180deg, deepskyblue 0%, dodgerblue 90%);
+      border: 1px solid #198bfa;
+      text-align: center;
+      color: @background;
+      font-weight: lighter !important;
+      width: 80%;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 15px;
     }
   }
 }

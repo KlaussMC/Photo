@@ -13,7 +13,9 @@ block content
   .albumView
     .albumControls
       h1.albumName
-      button(onclick="vars.closeAlbum()")#close.tool Close
+      button(onclick="vars.closeAlbum()")#close
+        img(src="res/nav_back.svg")
+
     .main
       ul.images
     
@@ -37,5 +39,5 @@ block content
       button(onclick="window.vars.next()")
         img(src="res/next.svg")
       button#fsbtn
-        img(src="res/fullscreen.svg")#fsbtnimg
+        img(src="res/smallscreen.svg")#fsbtnimg
               

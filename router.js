@@ -82,11 +82,24 @@ router.get('/logout', function (req, res) {
 
 router.get('/upload', function (req, res) {
 	if (req.session.signedIn) {
-		res.render('upload', { title, sizeLimit: 5, useSecondHeader: req.session.signedIn, albums: main.getAlbumList(req.session.user) })
+		res.render('upload', { title, sizeLimit: 5, useSecondHeader: req.session.signedIn, albums: main.getAlbums(req.session.user) })
 	} else {
 		// res.send('you need to sign in to upload images')
 		req.session.error = "You need to sign in to upload images."
 		res.redirect('/login')
+	}
+})
+router.put('/upload', function (req, res) {
+	bodyParser.json({limit: "50mb"})
+	var ajax = req.xhr;
+
+	if (ajax) {
+		if (req.session.signedIn) {
+			console.log(JSON.parse(req.body));
+			res.send('1')
+		} else {
+			res.send('0')
+		}
 	}
 })
 router.post('/dashboard', function (req, res) {
